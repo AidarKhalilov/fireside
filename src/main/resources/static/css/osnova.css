@@ -11,7 +11,7 @@ body {
 
 .cont {
     width: 1220px;
-    height: 1000px;
+    height: auto;
     background-color: #FDFBD2;
     margin-top: -50px;
     margin-left: auto;

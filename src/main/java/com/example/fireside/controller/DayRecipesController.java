@@ -59,7 +59,8 @@ public class DayRecipesController {
     public String getRecipes(@AuthenticationPrincipal User user, Model model) throws IOException {
         parseRecipe(user);
         model.addAttribute("recipes", recipes);
-        return "something";
+        model.addAttribute("user", user);
+        return "osnova";
     }
 
 }
