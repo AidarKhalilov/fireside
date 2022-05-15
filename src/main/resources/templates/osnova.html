@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -18,7 +18,7 @@
 <body>
     <header class="container">
         <div class="f_menu">
-            <h1 th:text="${user.getFirstName()} + ' ' + ${user.getLastName()}"> юзер</h1>
+            <h1 th:text="${user.getName()}"></h1>
         </div>
         <div class="logo_text">
             <h1>FIRESIDE</h1>
