@@ -77,7 +77,7 @@ public class HolidaysController {
     }
 
     @GetMapping("/holidays")
-    public ResponseEntity<HashMap<String, String>> getHolidays(@AuthenticationPrincipal User user, Model model) throws IOException {
+    public String getHolidays(@AuthenticationPrincipal User user, Model model) throws IOException {
         if (!result.isEmpty()) {
             result.clear();
         }
@@ -90,8 +90,8 @@ public class HolidaysController {
         MONTH = String.valueOf(LocalDateTime.now().getMonthValue());
         URL = "https://www.calend.ru/holidays/" + MONTH + "-" + DATE;
         model.addAttribute("holidays", result);
-        // model.addAttribute("user", user);
-        return ResponseEntity.ok(result);
+        model.addAttribute("user", user);
+        return "osnova";
     }
 
     @PostMapping("/holidays")
