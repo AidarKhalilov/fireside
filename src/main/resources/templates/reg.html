@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/auth.css">
+    <link rel="stylesheet" href="../static/css/reg.css">
 </head>
 
 <body>
@@ -21,12 +21,13 @@
         <div class="logo">
 
         </div>
-        <div class="auth">
+        <div class="reg">
             <form>
                 <table>
                     <tr>
                         <td>
-                            <div class="m_cont"><label class="mails" for="send" style="padding-left: 37px;">Почта: <input pattern="^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$" style="text-align: center;" class="mail" id = "send"type="text"></label></div>
+
+                            <div class="n_cont"><label class="name" for="names-input" style="padding-left: 37px;">Имя:<input style="text-align: center;" class="names" id="name-input" type="text"></label></div>
                         </td>
                     </tr>
 
@@ -35,9 +36,19 @@
                             <div class="pas_cont"><label class="pas" for="password-input" style="padding-left: 37px;">Пароль:<input style="text-align: center;" class="pasword" id="password-input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password"></label></div>
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <div class="pas_cont"><label class="pas" for="password-input" style="padding-left: 37px;">Повторный пароль:<input style="text-align: center;" class="pasword" id="password-input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password"></label></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="m_cont"><label class="mails" for="send" style="padding-left: 37px;">Почта: <input pattern="^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$" style="text-align: center;" class="mail" id = "send"type="text"></label></div>
+                        </td>
+                    </tr>
                 </table>
                 <div class="btn_auth">
-                    <button class="btn">Войти</button>
+                    <button class="btn">Регистрация</button>
                 </div>
             </form>
         </div>
@@ -45,9 +56,9 @@
             <table>
                 <tr>
                     <td>
-                        <p class="txt_ak">Нет аккаунта?</p>
+                        <p class="txt_ak">Есть аккаунт?</p>
                     </td>
-                    <td><a href="reg.html" class="txt_ak_a">Регистрация</a></td>
+                    <td><a class="txt_ak_a">Авторизация</a></td>
                 </tr>
             </table>
         </div>
