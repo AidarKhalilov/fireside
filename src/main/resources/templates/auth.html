@@ -22,22 +22,22 @@
 
         </div>
         <div class="auth">
-            <form>
+            <form action="/login" method="POST">
                 <table>
                     <tr>
                         <td>
-                            <div class="m_cont"><label class="mails" for="send" style="padding-left: 37px;">Почта: <input pattern="^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$" style="text-align: center;" class="mail" id = "send"type="text"></label></div>
+                            <div class="m_cont"><label class="mails" for="send" style="padding-left: 37px;">Почта: <input style="text-align: center;" class="mail" id = "send" name="username" type="text"></label></div>
                         </td>
                     </tr>
 
                     <tr>
                         <td>
-                            <div class="pas_cont"><label class="pas" for="password-input" style="padding-left: 37px;">Пароль:<input style="text-align: center;" class="pasword" id="password-input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password"></label></div>
+                            <div class="pas_cont"><label class="pas" for="password-input" style="padding-left: 37px;">Пароль:<input style="text-align: center;" class="pasword" id="password-input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="password" type="password"></label></div>
                         </td>
                     </tr>
                 </table>
                 <div class="btn_auth">
-                    <button class="btn">Войти</button>
+                    <button type="submit" class="btn">Войти</button>
                 </div>
             </form>
         </div>
@@ -47,7 +47,7 @@
                     <td>
                         <p class="txt_ak">Нет аккаунта?</p>
                     </td>
-                    <td><a href="reg.html" class="txt_ak_a">Регистрация</a></td>
+                    <td><a href="/registration" class="txt_ak_a">Регистрация</a></td>
                 </tr>
             </table>
         </div>

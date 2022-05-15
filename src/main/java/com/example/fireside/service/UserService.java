@@ -1,11 +1,14 @@
 package com.example.fireside.service;
 
+import com.example.fireside.entity.Role;
 import com.example.fireside.entity.User;
 import com.example.fireside.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.Collections;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -18,11 +21,7 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if (user == null) {
-            throw new UsernameNotFoundException("Пользователь не найден!");
-        }
-        return user;
+        return userRepository.findByUsername(username);
     }
 
     public boolean saveUser(User user) {
@@ -30,6 +29,8 @@ public class UserService implements UserDetailsService {
         if (userFromDb != null) {
             return false;
         }
+        user.setStatus(true);
+        user.setRoles(Collections.singleton(Role.USER));
         userRepository.save(user);
         return true;
     }

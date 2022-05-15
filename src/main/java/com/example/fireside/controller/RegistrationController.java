@@ -23,22 +23,24 @@ public class RegistrationController {
     @GetMapping("/registration")
     public String registration(Model model) {
         model.addAttribute("user", new User());
-        return "registration";
+        return "reg";
     }
 
     @PostMapping("/registration")
     public String addUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, Model model) {
+        model.addAttribute("user", user);
+
         if (bindingResult.hasErrors()) {
-            return "registration";
+            return "reg";
         }
 
         if (!user.getPassword().equals(user.getPasswordConfirm())) {
             model.addAttribute("passwordError", "Пароли не совпадают!");
-            return "registration";
+            return "reg";
         }
         if (!userService.saveUser(user)) {
             model.addAttribute("usernameError", "Пользователем с таким именем уже существует!");
-            return "registration";
+            return "reg";
         }
         return "redirect:/login";
     }

@@ -8,6 +8,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -81,15 +82,8 @@ public class HolidaysController {
         return holidays;
     }
 
-    public User getCurrentUser() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Object principal = authentication.getPrincipal();
-        String username = ((UserDetails)principal).getUsername();
-        return userRepository.findByUsername(username);
-    }
-
     @GetMapping("/holidays")
-    public ResponseEntity<HashMap<String, String>> getHolidays(Model model) throws IOException {
+    public ResponseEntity<HashMap<String, String>> getHolidays(@AuthenticationPrincipal User user, Model model) throws IOException {
         if (!result.isEmpty()) {
             result.clear();
         }
