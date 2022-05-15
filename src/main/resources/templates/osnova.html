@@ -16,21 +16,33 @@
 </head>
 
 <body>
-    <header class="container">
-        <div class="f_menu">
-            <h1 th:text="${user.getFirstName()} + ' ' + ${user.getLastName()}"> юзер</h1>
-        </div>
-        <div class="logo_text">
-            <h1>FIRESIDE</h1>
-        </div>
-        <div class="sec-menu">
-        </div>
+    <div class="info">
+        <header class="container">
+            <div class="f_menu">
+                <h1 th:text="${user.getFirstName()} + ' ' + ${user.getLastName()}"> юзер</h1>
+            </div>
+            <div class="logo_text">
+                <h1>FIRESIDE</h1>
+            </div>
+            <div class="sec-menu">
+            </div>
 
-    </header>
-    <div class="cont">
+        </header>
+        <div class="cont">
+            <div class="name_txt">
+                <h1 style="margin-left: 30%; margin-top:50px">Рецепты дня</h1>
+            </div>
+            <div class="recipe_cont" style="margin-top: 100px;margin-left:auto;margin-right:auto;">
+                <img class="dish_img" src="http://img.iamcook.ru/2022/upl/recipes/middle/u-ce08648d4f3b82b61a9135e77c74d47d.jpg">
+                <div class="dish_name">
+                    <p> привет</p>
+                </div>
+                <textarea class="dish_txt"></textarea>
 
+            </div>
+            <div></div>
+        </div>
     </div>
-
 </body>
 
 </html>
