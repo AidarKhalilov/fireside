@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    background: linear-gradient( rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.9)), url('../images/dish.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: top;
+}
+
+.cont {
+    width: 1220px;
+    height: 1000px;
+    background-color: #FDFBD2;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.f_menu {
+    display: grid;
+}
+
+.logo_text {
+    display: grid;
+}
+
+header {
+    width: 100%;
+    background: black;
+    height: 70px;
+}
+
+.f_menu h1 {
+    color: white;
+    text-align: center;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 35px;
+    margin: 0;
+    padding: 15px;
+}
+
+.logo_text h1 {
+    margin: 0;
+    padding: 25px;
+    color: white;
+    text-align: center;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 35px;
+    letter-spacing: 25px;
+    line-height: 20px;
+    text-shadow: 6px 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+.sec-menu {
+    display: grid;
+    place-items: center;
+}
+
+.container {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 350px auto 350px;
+}
