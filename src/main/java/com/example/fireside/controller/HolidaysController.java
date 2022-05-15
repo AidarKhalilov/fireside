@@ -30,12 +30,6 @@ public class HolidaysController {
     private String STATE = "Праздники России";
     private String URL = "https://www.calend.ru/holidays/" + MONTH + "-" + DATE;
 
-    private final UserRepository userRepository;
-
-    public HolidaysController (UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
     public HashMap<String, String> getResult() {
         return this.result;
     }
@@ -96,7 +90,7 @@ public class HolidaysController {
         MONTH = String.valueOf(LocalDateTime.now().getMonthValue());
         URL = "https://www.calend.ru/holidays/" + MONTH + "-" + DATE;
         model.addAttribute("holidays", result);
-//        model.addAttribute("user", getCurrentUser());
+        // model.addAttribute("user", user);
         return ResponseEntity.ok(result);
     }
 
@@ -108,5 +102,4 @@ public class HolidaysController {
         this.URL = "https://www.calend.ru/holidays/" + MONTH + "-" + DATE;
         return "redirect:/holidays";
     }
-
 }
