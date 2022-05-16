@@ -2,13 +2,14 @@ package com.example.fireside.controller;
 
 import com.example.fireside.entity.Recipe;
 import com.example.fireside.entity.User;
+import com.example.fireside.service.RecipeService;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,6 +20,12 @@ import java.util.Objects;
 public class DayRecipesController {
 
     private final List<Recipe> recipes = new ArrayList<>();
+
+    private final RecipeService recipeService;
+
+    public DayRecipesController (RecipeService recipeService) {
+        this.recipeService = recipeService;
+    }
 
     public void parseRecipe(User user) throws IOException {
         String URL = "https://www.iamcook.ru/new/today";
@@ -56,11 +63,52 @@ public class DayRecipesController {
     }
 
     @GetMapping("/recipes")
-    public String getRecipes(@AuthenticationPrincipal User user, Model model) throws IOException {
-        parseRecipe(user);
-        model.addAttribute("recipes", recipes);
+    public String getRecipes(@AuthenticationPrincipal User user, Model model) {
+        try {
+            parseRecipe(user);
+        } catch (IOException e) {
+            model.addAttribute(e.getMessage());
+        }
+        if (!recipes.isEmpty()) {
+            model.addAttribute("recipes", recipes);
+        }
         model.addAttribute("user", user);
         return "osnova";
     }
 
+    @PostMapping("/recipes")
+    public String addRecipes(@ModelAttribute(name = "recipe") Recipe recipe, Model model) {
+        if (!recipeService.saveRecipe(recipe)) {
+            model.addAttribute("recipeError", "Этот рецепт уже находится в вашей корзине!");
+        }
+        return "redirect:/recipes";
+    }
+
+    @GetMapping("/recipes/my")
+    public String getMyRecipes(@AuthenticationPrincipal User user, Model model) {
+        List<Recipe> myRecipes = recipeService.getRecipes(user);
+        if (myRecipes == null) {
+            model.addAttribute("recipesNotFound", "Ваша корзина пуста!");
+            return "something";
+        }
+        model.addAttribute("recipes", myRecipes);
+        return "something";
+    }
+
+    @DeleteMapping("/recipes/my/{id}")
+    public String deleteRecipe(@PathVariable(name = "id") Long id) {
+        recipeService.deleteRecipe(id);
+        return "redirect:/recipes/my";
+    }
+
+    @PostMapping("/recipes/my/find")
+    public String findRecipes(@RequestParam String category, Model model) {
+        List<Recipe> recipes = recipeService.findByCategory(category);
+        if (recipes == null) {
+            model.addAttribute("recipesNotFound", "Рецептов в данной категории не найдено!");
+            return "something";
+        }
+        model.addAttribute("recipes", recipes);
+        return "something";
+    }
 }
