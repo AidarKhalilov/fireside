@@ -107,11 +107,52 @@ header {
     font-size: 16px;
 }
 
+.btn {
+    grid-area: btn;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+.btn_add {
+    width: 150px;
+    height: 50px;
+    background-color: #AD8585;
+    border-radius: 15px;
+    font-family: 'Oswald', sans-serif;
+    border: 2px solid #8c6a6a;
+    font-size: 20px;
+    color: white;
+}
+
+#dish_txt::-webkit-scrollbar {
+    width: 12px;
+    background: none;
+}
+
+#dish_txt::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(#AD8585, #8c6a6a, #AD8585);
+    border: 2px solid #7b5d5d;
+}
+
+body::-webkit-scrollbar {
+    width: 12px;
+    background-color: black;
+}
+
+body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(#AD8585, #8c6a6a, #AD8585);
+    border: 2px solid #7b5d5d;
+}
+
 .recipe_cont {
     width: 1100px;
     height: auto;
     /* border: 2px solid rebeccapurple;
     border-radius: 20px; */
     display: grid;
-    grid-template-areas: 'dish_img  dish_txt dish_txt dish_txt  dish_txt' '. dish_txt dish_txt dish_txt  dish_txt' 'dish_name  dish_txt dish_txt dish_txt dish_txt' '.  dish_txt dish_txt dish_txt dish_txt' '.  dish_txt dish_txt dish_txt dish_txt';
+    grid-template-areas: 'dish_img  dish_txt dish_txt dish_txt  dish_txt' '. dish_txt dish_txt dish_txt  dish_txt' 'dish_name  dish_txt dish_txt dish_txt dish_txt' 'btn . . . .';
+    /* '.  dish_txt dish_txt dish_txt dish_txt' */
 }

@@ -32,12 +32,15 @@
             <div class="name_txt">
                 <h1 style="margin-left: 30%; margin-top:50px; color: white">Рецепты дня</h1>
             </div>
-            <div th:each = "recipe : ${recipes}" class="recipe_cont" style="margin-top: 100px;margin-left:auto;margin-right:auto;">
+            <div th:each="recipe : ${recipes}" class="recipe_cont" style="margin-top: 100px;margin-left:auto;margin-right:auto;">
                 <img class="dish_img" th:src="${recipe.getImage()}">
                 <div class="dish_name">
-                    <p th:text = "${recipe.getTitle()}"></p>
+                    <p th:text="${recipe.getTitle()}"></p>
                 </div>
-                <textarea class="dish_txt" th:text = "${recipe.getDescription()}"></textarea>
+                <form action="" method="post" class="btn">
+                    <input class="btn_add" type="submit" name="add" value="Добавить" />
+                </form>
+                <textarea class="dish_txt" id="dish_txt" th:text="${recipe.getDescription()}"></textarea>
 
             </div>
             <div></div>
