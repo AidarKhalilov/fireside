@@ -64,13 +64,26 @@ public class DayRecipesController {
 
     @GetMapping("/recipes")
     public String getRecipes(@AuthenticationPrincipal User user, Model model) {
+        if (!recipes.isEmpty()) {
+            recipes.clear();
+        }
         try {
             parseRecipe(user);
         } catch (IOException e) {
             model.addAttribute(e.getMessage());
         }
         if (!recipes.isEmpty()) {
+            List <Recipe> currentRecipes = recipeService.findByAuthor(user);
+            for (int i = 0; i < recipes.size(); i++) {
+                if (recipes.get(i).getTitle().equals(currentRecipes.get(i).getTitle())) {
+                    recipes.remove(i);
+                    i--;
+                }
+            }
             model.addAttribute("recipes", recipes);
+        }
+        else {
+            model.addAttribute("recipesNotFound", "Не удалось найти рецептов на сегодня!");
         }
         model.addAttribute("user", user);
         return "osnova";
