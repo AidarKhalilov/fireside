@@ -83,8 +83,11 @@ public class DayRecipesController {
     }
 
     @PostMapping("/recipes")
-    public String addRecipes(@ModelAttribute(name = "recipe") Recipe recipe, Model model) {
-        if (!recipeService.saveRecipe(recipe)) {
+    public String addRecipes(@RequestParam String title, @RequestParam String description,
+                             @RequestParam String category, @RequestParam String image,
+                             @AuthenticationPrincipal User author, Model model) {
+        Recipe recipe = new Recipe(title, description, category, image, author);
+        if (!recipeService.saveRecipe(author, recipe)) {
             model.addAttribute("recipeError", "Этот рецепт уже находится в вашей корзине!");
         }
         return "redirect:/recipes";

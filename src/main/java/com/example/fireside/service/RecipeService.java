@@ -16,10 +16,12 @@ public class RecipeService {
         this.recipeRepository = recipeRepository;
     }
 
-    public boolean saveRecipe(Recipe recipe) {
-        Recipe recipeFromDb = recipeRepository.findByTitle(recipe.getTitle());
-        if (recipeFromDb != null) {
-            return false;
+    public boolean saveRecipe(User user, Recipe recipe) {
+        List<Recipe> recipes = recipeRepository.findByAuthor(user);
+        for (Recipe single : recipes) {
+            if (single.getTitle().equals(recipe.getTitle())) {
+                return false;
+            }
         }
         recipeRepository.save(recipe);
         return true;

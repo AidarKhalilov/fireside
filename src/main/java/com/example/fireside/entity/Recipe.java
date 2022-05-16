@@ -15,6 +15,7 @@ public class Recipe {
 
     private String title;
 
+    @Column(name = "description", length = 4096)
     private String description;
 
     private String category;

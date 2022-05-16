@@ -37,8 +37,12 @@
                 <div class="dish_name">
                     <p th:text="${recipe.getTitle()}"></p>
                 </div>
-                <form action="" method="post" class="btn">
+                <form action="/recipes" method="post" class="btn">
                     <input class="btn_add" type="submit" name="add" value="Добавить" />
+                    <input type="hidden" th:value="${recipe.getTitle()}" name="title"/>
+                    <input type="hidden" th:value="${recipe.getDescription()}" name="description"/>
+                    <input type="hidden" th:value="${recipe.getCategory()}" name="category"/>
+                    <input type="hidden" th:value="${recipe.getImage()}" name="image"/>
                 </form>
                 <textarea class="dish_txt" id="dish_txt" th:text="${recipe.getDescription()}"></textarea>
 
