@@ -84,7 +84,9 @@
 </project>
 
 ```
-![Spring](https://easyjava.ru/wp-content/uploads/2017/10/spring-boot-logo.jpg)![PostgreSQL](https://developer.asustor.com/uploadIcons/0020_999_1617260177_postgresql-icon_256.png)![Thymeleaf](https://avatars.githubusercontent.com/u/1492367?s=280&v=4)
+![Spring](https://easyjava.ru/wp-content/uploads/2017/10/spring-boot-logo.jpg)
+![PostgreSQL](https://developer.asustor.com/uploadIcons/0020_999_1617260177_postgresql-icon_256.png)
+![Thymeleaf](https://avatars.githubusercontent.com/u/1492367?s=280&v=4)
 <br><br>
 К главным зависимостям, использующимся в проекте можно отнести Spring Boot для Java, упрощающий разработку веб-приложений. Также сюда можно отнести Lombok для расшире
 ния функциональности языка Java. Thymeleaf - шаблонизатор, позволяющий связывать HTML5 и XML с веб-приложением уровня Spring MVC. В проекте также используется система управления базами данных PostgreSQL.
