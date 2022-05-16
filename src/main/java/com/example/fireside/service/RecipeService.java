@@ -33,6 +33,14 @@ public class RecipeService {
         return recipes;
     }
 
+    public Recipe findByTitle(String title) {
+        return recipeRepository.findByTitle(title);
+    }
+
+    public List<Recipe> findByAuthor(User author) {
+        return recipeRepository.findByAuthor(author);
+    }
+
     public void deleteRecipe(Long id) {
         recipeRepository.deleteById(id);
     }
