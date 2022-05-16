@@ -73,13 +73,6 @@ public class DayRecipesController {
             model.addAttribute(e.getMessage());
         }
         if (!recipes.isEmpty()) {
-            List <Recipe> currentRecipes = recipeService.findByAuthor(user);
-            for (int i = 0; i < recipes.size(); i++) {
-                if (recipes.get(i).getTitle().equals(currentRecipes.get(i).getTitle())) {
-                    recipes.remove(i);
-                    i--;
-                }
-            }
             model.addAttribute("recipes", recipes);
         }
         else {
