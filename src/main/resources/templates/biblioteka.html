@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Рецепты дня</title>
+    <title>Мои рецепты</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=PT+Sans+Narrow:wght@700&family=Roboto&display=swap" rel="stylesheet">
@@ -55,7 +55,6 @@
                 <textarea class="dish_txt" id="dish_txt" readonly th:text="${recipe.getDescription()}"></textarea>
 
             </div>
-
         </div>
         <div class="t_cont">
 
@@ -66,7 +65,7 @@
             <a onclick="closePopUp()" class="arrow_btn_hol"><img src="/static/images/arrow.svg" style="margin-top: 21px; margin-left: 10px"></a>
 
             <div class="popup_recipes">
-                <a href="/auth/main/">
+                <a href="/recipes">
                     <p class="pop_recipes_p">Рецепты дня</p>
                 </a>
             </div>
@@ -76,7 +75,6 @@
                 </a>
             </div>
         </div>
-    </div>
     </div>
 </body>
 

@@ -97,11 +97,13 @@ public class DayRecipesController {
     public String getMyRecipes(@AuthenticationPrincipal User user, Model model) {
         List<Recipe> myRecipes = recipeService.getRecipes(user);
         if (myRecipes == null) {
-            model.addAttribute("recipesNotFound", "Ваша корзина пуста!");
-            return "something";
+            model.addAttribute("user", user);
+            model.addAttribute("recipesNotFound", "Вы, сир, долбоеб, ничего не выбрали!");
+            return "biblioteka";
         }
+        model.addAttribute("user", user);
         model.addAttribute("recipes", myRecipes);
-        return "something";
+        return "biblioteka";
     }
 
     @DeleteMapping("/recipes/my/{id}")
