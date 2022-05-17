@@ -38,7 +38,7 @@
         </div>
         <div class="cont">
             <div class="name_txt">
-                <h1 style="margin-left: 30%; margin-top:50px; color: white">Рецепты дня</h1>
+                <h1 style="margin-left: 30%; margin-top:50px; color: white">Мои рецепты</h1>
             </div>
             <div th:each="recipe : ${recipes}" class="recipe_cont" style="margin-top: 100px;margin-left:auto;margin-right:auto;">
                 <img class="dish_img" th:src="${recipe.getImage()}">
@@ -67,7 +67,7 @@
 
             <div class="popup_recipes">
                 <a href="/auth/main/">
-                    <p class="pop_recipes_p">Мои рецепты</p>
+                    <p class="pop_recipes_p">Рецепты дня</p>
                 </a>
             </div>
             <div class="popup_my_recipes">
