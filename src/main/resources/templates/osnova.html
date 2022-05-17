@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
     <link rel="icon" href="/static/images/icon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../static/css/osnova.css">
+    <script src="../static/js/scrol.js"></script>
 
 </head>
 
@@ -26,7 +27,7 @@
             <h1>FIRESIDE</h1>
         </div>
         <div class="sec-menu">
-            <a href="#pop_menu" id="pop"> <img src="/static/images/menu.svg" alt="" width="35%" height="35%" style="margin-left: 150px;"> </a>
+            <a onclick="openPopUp()" id="pop"><img src="/static/images/menu.svg" alt="" width="35%" height="35%" style="margin-left: 150px;"></a>
         </div>
 
     </header>
@@ -53,7 +54,7 @@
     </div>
     <div id="pop_menu" class="pop_menu">
         <div class="popup_menu_cont">
-            <a href="" class="arrow_btn_hol"><img src="/static/images/arrow.svg" style="margin-top: 21px; margin-left: 10px"></a>
+            <a onclick="closePopUp()" class="arrow_btn_hol"><img src="/static/images/arrow.svg" style="margin-top: 21px; margin-left: 10px"></a>
             <div class="popup_recipes">
                 <a href="/auth/main/">
                     <p class="pop_recipes_p">Заметки</p>
