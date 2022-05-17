@@ -1,4 +1,5 @@
-body {
+body,
+html {
     margin: 0;
     padding: 0;
     background-color: rgba(0, 0, 0, 0.8);
@@ -7,14 +8,16 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-position: top;
+    height: 100%;
 }
 
 .cont {
     width: 1220px;
+    position: absolute;
     height: auto;
     background-color: rgba(173, 133, 133, 0.8);
-    margin-top: -50px;
-    margin-left: auto;
+    margin-left: 21.5%;
+    margin-top: 68px;
     margin-right: auto;
 }
 
@@ -30,6 +33,7 @@ header {
     width: 100%;
     background: black;
     height: 70px;
+    position: absolute;
 }
 
 .f_menu h1 {
@@ -75,6 +79,7 @@ header {
 .container {
     display: grid;
     gap: 10px;
+    margin-top: 0px;
     grid-template-columns: 350px auto 350px;
 }
 
@@ -155,4 +160,103 @@ body::-webkit-scrollbar-thumb {
     display: grid;
     grid-template-areas: 'dish_img  dish_txt dish_txt dish_txt  dish_txt' '. dish_txt dish_txt dish_txt  dish_txt' 'dish_name  dish_txt dish_txt dish_txt dish_txt' 'btn . . . .';
     /* '.  dish_txt dish_txt dish_txt dish_txt' */
+}
+
+.pop_menu {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.8s;
+}
+
+.pop_menu:target {
+    opacity: 1;
+    visibility: visible;
+    overflow: hidden;
+}
+
+.popup_menu_cont {
+    background-color: rgba(173, 133, 133, 0.99);
+    margin-top: 68px;
+    width: 620px;
+    height: 100%;
+    margin-left: auto;
+    transition: all 0.8s;
+}
+
+.pop_bud {
+    height: 100%;
+}
+
+.popup_recipes {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 45%;
+    height: 80px;
+    weight: 200px;
+    background-color: #8c6a6a;
+    border-radius: 15px;
+    border-style: solid;
+    border-weight: 1px;
+    border-color: #7b5d5d;
+}
+
+.popup_recipes:hover {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 45%;
+    height: 80px;
+    weight: 200px;
+    background-color: #8c6a6a;
+    border-radius: 15px;
+    border-style: solid;
+    border-weight: 1px;
+    border-color: #8e6969;
+}
+
+.popup_my_recipes {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 40px;
+    height: 80px;
+    weight: 200px;
+    background-color: #8c6a6a;
+    border-radius: 15px;
+    border-style: solid;
+    border-weight: 1px;
+    border-color: #7b5d5d;
+}
+
+.popup_my_recipes:hover {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 40px;
+    height: 80px;
+    weight: 200px;
+    background-color: #8c6a6a;
+    border-radius: 15px;
+    border-style: solid;
+    border-weight: 1px;
+    border-color: #8e6969;
+}
+
+.pop_recipes_p {
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+    color: white;
+    text-align: center;
+}
+
+.my_recipes_p {
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+}
+
+a {
+    text-decoration: none;
 }
