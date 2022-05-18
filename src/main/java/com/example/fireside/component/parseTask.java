@@ -11,8 +11,10 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 
 @Component
@@ -21,7 +23,7 @@ public class parseTask {
     @Autowired
     RecipeService recipeService;
 
-    @Scheduled(fixedDelay = 1000)
+    @Scheduled(fixedRate = 3600000)
     public void parseRecipes() {
         try {
             Document document = Jsoup.connect("https://www.iamcook.ru/new/yesterday")
@@ -33,6 +35,18 @@ public class parseTask {
                     " > div.recblock");
             List<Recipe> recipes = new ArrayList<>();
             List<String> titles = result.select(" > div.info > div.header > a").eachText();
+            List<String> titlesCopy = new ArrayList<>(titles);
+            if (!recipeService.getRecipeList().isEmpty()) {
+                List<String> titlesFromDb = recipeService.getRecipeList()
+                        .stream()
+                        .map(Recipe::getTitle)
+                        .collect(Collectors.toList());
+                Collections.sort(titlesCopy);
+                Collections.sort(titlesFromDb);
+                if (titlesCopy.equals(titlesFromDb)) {
+                    return;
+                }
+            }
             List<String> images = result.select(" > a > img.preimage").eachAttr("src");
             List<String> descriptions = new ArrayList<>();
             List<String> categories = new ArrayList<>();

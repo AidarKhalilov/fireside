@@ -38,19 +38,18 @@
         </div>
         <div class="cont">
             <div class="name_txt">
-                <h1 style="margin-left: 30%; margin-top:50px; color: white">Мои рецепты</h1>
+                <form method="post" action="/recipes/my">
+                    <input type="text" name="category" style="margin-left: 30%; margin-top:50px; color: white">
+                    <button type="submit">Найти</button>
+                </form>
             </div>
             <div th:each="recipe : ${recipes}" class="recipe_cont" style="margin-top: 100px;margin-left:auto;margin-right:auto;">
                 <img class="dish_img" th:src="${recipe.getImage()}">
                 <div class="dish_name">
                     <p th:text="${recipe.getTitle()}"></p>
                 </div>
-                <form action="/recipes" method="post" class="btn">
-                    <input class="btn_add" type="submit" name="add" value="Добавить" />
-                    <input type="hidden" th:value="${recipe.getTitle()}" name="title" />
-                    <input type="hidden" th:value="${recipe.getDescription()}" name="description" />
-                    <input type="hidden" th:value="${recipe.getCategory()}" name="category" />
-                    <input type="hidden" th:value="${recipe.getImage()}" name="image" />
+                <form th:action="@{/recipes/my/{id}(id=${recipe.getId()})}" th:method="DELETE" class="btn">
+                    <input class="btn_add" type="submit" name="delete" value="Удалить" />
                 </form>
                 <textarea class="dish_txt" id="dish_txt" readonly th:text="${recipe.getDescription()}"></textarea>
 

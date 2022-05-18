@@ -42,7 +42,7 @@ public class DayRecipesController {
         List<Recipe> myRecipes = recipeService.getRecipes(user);
         if (myRecipes == null) {
             model.addAttribute("user", user);
-            model.addAttribute("recipesNotFound", "Вы, сир, долбоеб, ничего не выбрали!");
+            model.addAttribute("recipesNotFound", "Ошибка, ваша корзина пуста!");
             return "biblioteka";
         }
         model.addAttribute("user", user);
@@ -56,14 +56,16 @@ public class DayRecipesController {
         return "redirect:/recipes/my";
     }
 
-    @PostMapping("/recipes/my/find")
-    public String findRecipes(@RequestParam String category, Model model) {
-        List<Recipe> recipes = recipeService.findByCategory(category);
+    @PostMapping("/recipes/my")
+    public String findRecipes(@AuthenticationPrincipal User user, @RequestParam String category, Model model) {
+        List<Recipe> recipes = recipeService.findByCategory(user, category);
         if (recipes == null) {
             model.addAttribute("recipesNotFound", "Рецептов в данной категории не найдено!");
-            return "something";
+            model.addAttribute("user", user);
+            return "biblioteka";
         }
         model.addAttribute("recipes", recipes);
-        return "something";
+        model.addAttribute("user", user);
+        return "biblioteka";
     }
 }
