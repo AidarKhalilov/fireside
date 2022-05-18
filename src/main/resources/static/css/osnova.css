@@ -11,6 +11,18 @@ html {
     height: 100%;
 }
 
+.hol_base {
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    background: linear-gradient( rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.9)), url('../images/test1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: top;
+    height: 100%;
+}
+
 .cont {
     grid-area: s;
     width: 1220px;
@@ -278,4 +290,10 @@ body::-webkit-scrollbar-thumb {
 
 a {
     text-decoration: none;
+}
+
+.search form {
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
 }

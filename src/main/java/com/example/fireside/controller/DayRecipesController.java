@@ -28,7 +28,7 @@ public class DayRecipesController {
     }
 
     public void parseRecipe(User user) throws IOException {
-        String URL = "https://www.iamcook.ru/new/today";
+        String URL = "https://www.iamcook.ru/new/yesterday";
         Document document = Jsoup.connect(URL)
                 .userAgent("Google Chrome")
                 .timeout(5000)
