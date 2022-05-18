@@ -292,8 +292,62 @@ a {
     text-decoration: none;
 }
 
-.search form {
-    margin-left: auto;
-    margin-right: auto;
-    width: 150px;
+.form_search {
+    margin-left: 30%;
+    width: 100%;
+    color: white;
+}
+
+#day {
+    background-color: #8c6a6a;
+    color: white;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+
+#day::-webkit-scrollbar {
+    width: 12px;
+    background: none;
+}
+
+#day::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(#AD8585, #8c6a6a, #AD8585);
+    border: 2px solid #7b5d5d;
+}
+
+#month {
+    background-color: #8c6a6a;
+    color: white;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+
+#month::-webkit-scrollbar {
+    width: 12px;
+    background: none;
+}
+
+#month::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(#AD8585, #8c6a6a, #AD8585);
+    border: 2px solid #7b5d5d;
+}
+
+#search_cont {
+    background-color: #8c6a6a;
+    color: white;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+
+#search_cont::-webkit-scrollbar {
+    width: 12px;
+    background: none;
+}
+
+#search_cont::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(#AD8585, #8c6a6a, #AD8585);
+    border: 2px solid #7b5d5d;
 }

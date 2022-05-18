@@ -5,12 +5,15 @@ import com.example.fireside.entity.User;
 import com.example.fireside.repository.RecipeRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class RecipeService {
 
     private final RecipeRepository recipeRepository;
+
+    private final List<Recipe> currentRecipes = new ArrayList<>();
 
     public RecipeService(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
@@ -27,20 +30,26 @@ public class RecipeService {
         return true;
     }
 
-    public List<Recipe> findByCategory(String category) {
-        List<Recipe> recipes = recipeRepository.findByCategory(category);
-        if (recipes.isEmpty()) {
-            return null;
+    public List<Recipe> findByCategory(User author, String category) {
+        List<Recipe> recipes = recipeRepository.findByAuthor(author);
+        List<Recipe> result = new ArrayList<>();
+        for (Recipe element : recipes) {
+            if (element.getCategory().toLowerCase().contains(category.toLowerCase())) {
+                result.add(element);
+            }
         }
-        return recipes;
+        return result;
     }
 
-    public Recipe findByTitle(String title) {
-        return recipeRepository.findByTitle(title);
+    public void saveRecipeList(List<Recipe> recipes) {
+        if (!this.currentRecipes.isEmpty()) {
+            this.currentRecipes.clear();
+        }
+        this.currentRecipes.addAll(recipes);
     }
 
-    public List<Recipe> findByAuthor(User author) {
-        return recipeRepository.findByAuthor(author);
+    public List<Recipe> getRecipeList() {
+        return this.currentRecipes;
     }
 
     public void deleteRecipe(Long id) {

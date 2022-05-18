@@ -41,21 +41,29 @@
                 <h1 style="margin-left: 30%; margin-top:50px; color: white">Праздники</h1>
             </div>
             <div class="search">
-                <div class="search_f">
-                    <form action="/auth/main/find" class="vidjet_note_search" method="POST">
-                        <select>
-                            <option>Пункт 1</option>
-                            <option>Пункт 2</option>
-                            <option>Пункт 3</option>
-                            <option>Пункт 4</option>
-                            <option>Пункт 5</option>
-                            <option>Пункт 6</option>
-                            <option>Пункт 7</option>
-                            <option>Пункт 8</option>
+
+                <form action="/auth/main/find" class="form_search" method="POST">
+                    <span>
+                            <label for="day">День:</label>
+                            <select name="day" id="day" ></select>
+                        </span>
+                    <span>
+                            <label for="month">Месяц:</label>
+                            <select name="month" id="month"></select>
+                        </span>
+                    <select id="search_cont">
+                            <option>Праздники России</option>
+                            <option>Праздники Украины</option>
+                            <option>Международные праздники</option>
+                            <option>Праздники Китая</option>
+                            <option>Праздники США</option>
+                            <option>Праздники Беларуси</option>
+                            <option>Праздники Азербайджана</option>
+                            <option>Праздники Армении</option>
                           </select>
-                        <button class="poisk" type="submit"><img src="/static/images/lupa.svg" class="svg_lupa"></button>
-                    </form>
-                </div>
+                    <button class="poisk" type="submit"><img src="/static/images/lupa.svg" class="svg_lupa"></button>
+                </form>
+
 
 
             </div>
@@ -97,6 +105,7 @@
         </div>
     </div>
     </div>
+    <script src="../static/js/date.js"></script>
 </body>
 
 </html>

@@ -35,12 +35,12 @@
 
                     <tr>
                         <td>
-                            <div class="pas_cont"><label class="pas" for="password-input" style="padding-left: 37px;">Пароль:<input style="text-align: center;" class="pasword" id="password-input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" th:field="*{password}" type="password"></label></div>
+                            <div class="pas_cont"><label class="pas" for="password-input" style="padding-left: 37px;">Пароль:<input style="text-align: center;" class="pasword" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" th:field="*{password}" type="password"></label></div>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <div class="pas_cont"><label class="pas" for="password-input" style="padding-left: 37px;">Повторный пароль:<input style="text-align: center;" class="pasword" id="password-input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" th:field="*{passwordConfirm}" type="password"></label></div>
+                            <div class="pas_cont"><label class="pas" for="password-input" style="padding-left: 37px;">Повторный пароль:<input style="text-align: center;" onblur="checkPasswords()" class="pasword" id="passwordConfirm" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" th:field="*{passwordConfirm}" type="password"></label></div>
                         </td>
                     </tr>
                     <tr>
@@ -50,7 +50,7 @@
                     </tr>
                 </table>
                 <div class="btn_auth">
-                    <button class="btn">Регистрация</button>
+                    <button class="btn" id="button">Регистрация</button>
                 </div>
             </form>
         </div>
@@ -65,6 +65,7 @@
             </table>
         </div>
     </div>
+    <script src="../static/js/password.js"></script>
 </body>
 
 </html>
