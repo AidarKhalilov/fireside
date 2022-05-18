@@ -19,6 +19,7 @@ public class DayRecipesController {
         this.recipeService = recipeService;
     }
 
+
     @GetMapping("/recipes")
     public String getRecipes(@AuthenticationPrincipal User user, Model model) {
         model.addAttribute("recipes", recipeService.getRecipeList());

@@ -5,10 +5,9 @@ function checkPasswords() {
         document.getElementById("button").textContent = "Регистрация";
         document.getElementById("button").style.color = 'white';
         document.querySelector('button').disabled = false;
-    }
-    else {
-        document.getElementById("button").textContent = "Пароли не совпадают";
-        document.getElementById("button").style.color = 'red';
+    } else {
+        document.getElementById("button").textContent = "Регистрация";
+        document.getElementById("button").style.background = 'gray';
         document.querySelector('button').disabled = true;
     }
 }
