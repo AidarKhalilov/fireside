@@ -41,8 +41,7 @@
                 <h1 style="margin-left: 30%; margin-top:50px; color: white">Праздники</h1>
             </div>
             <div class="search">
-
-                <form action="/auth/main/find" class="form_search" method="POST">
+                <form action="/holidays" class="form_search" method="POST">
                     <span>
                             <label for="day">День:</label>
                             <select name="day" id="day" ></select>
@@ -51,7 +50,7 @@
                             <label for="month">Месяц:</label>
                             <select name="month" id="month"></select>
                         </span>
-                    <select id="search_cont">
+                    <select name = "state" id="search_cont">
                             <option>Праздники России</option>
                             <option>Праздники Украины</option>
                             <option>Международные праздники</option>
@@ -63,23 +62,17 @@
                           </select>
                     <button class="poisk" type="submit"><img src="/static/images/lupa.svg" class="svg_lupa"></button>
                 </form>
-
-
-
             </div>
-            <div th:each="recipe : ${recipes}" class="recipe_cont" style="margin-top: 100px;margin-left:auto;margin-right:auto;">
-                <img class="dish_img" th:src="${recipe.getImage()}">
+
+            <p th:if = "${exception != null}" th:text = "${exception}"></p>
+
+            <div th:each="holiday : ${holidays}" class="recipe_cont" style="margin-top: 100px;margin-left:auto;margin-right:auto;">
+
+                <img class="dish_img" th:src="${holiday.getImage()}">
                 <div class="dish_name">
-                    <p th:text="${recipe.getTitle()}"></p>
+                    <p th:text="${holiday.getTitle()}"></p>
                 </div>
-                <form action="/recipes" method="post" class="btn">
-                    <input class="btn_add" type="submit" name="add" value="Добавить" />
-                    <input type="hidden" th:value="${recipe.getTitle()}" name="title" />
-                    <input type="hidden" th:value="${recipe.getDescription()}" name="description" />
-                    <input type="hidden" th:value="${recipe.getCategory()}" name="category" />
-                    <input type="hidden" th:value="${recipe.getImage()}" name="image" />
-                </form>
-                <textarea class="dish_txt" id="dish_txt" readonly th:text="${recipe.getDescription()}"></textarea>
+                <textarea class="dish_txt" id="dish_txt" readonly th:text="${holiday.getDescription()}"></textarea>
 
             </div>
 
@@ -98,12 +91,11 @@
                 </a>
             </div>
             <div class="popup_my_recipes">
-                <a href="/auth/holidays">
-                    <p class="my_recipes_p">Праздники</p>
+                <a href="/recipes">
+                    <p class="my_recipes_p">Рецепты дня</p>
                 </a>
             </div>
         </div>
-    </div>
     </div>
     <script src="../static/js/date.js"></script>
 </body>

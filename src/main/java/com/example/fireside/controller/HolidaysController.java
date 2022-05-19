@@ -1,5 +1,7 @@
 package com.example.fireside.controller;
 
+import com.example.fireside.entity.Holiday;
+import com.example.fireside.entity.Month;
 import com.example.fireside.entity.User;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -14,20 +16,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class HolidaysController {
 
-    private final HashMap<String, String> result = new HashMap<>();
-    private String DATE = "13";
-    private String MONTH = "5";
-    private String STATE = "Праздники России";
+    private final List<Holiday> result = new ArrayList<>();
+    private String DATE = String.valueOf(LocalDateTime.now().getDayOfMonth());
+    private String MONTH = String.valueOf(LocalDateTime.now().getMonthValue());
+    private String STATE = "";
     private String URL = "https://www.calend.ru/holidays/" + MONTH + "-" + DATE;
-
-    public HashMap<String, String> getResult() {
-        return this.result;
-    }
 
     public void parseHolidays() throws IOException {
         Document document = Jsoup.connect(URL)
@@ -38,12 +37,23 @@ public class HolidaysController {
         Elements holidays = document.select("body > div.wrapper > div.block.main" +
                 " > div.block.content > div.block.datesList > div.block.holidays > ul.itemsNet > li.three-three" +
                 " > div.caption");
+        Elements images = document.select("body > div.wrapper > div.block.main > div.block.content" +
+                " > div.block.datesList > div.block.holidays > ul.itemsNet > li.three-three" +
+                " > div.image > a > img");
         if (holidays.isEmpty()) {
             throw new IOException("Ошибка! Проверьте правильность введенных вами данных.");
         }
-        holidays = sortByState(holidays);
-        if (holidays.isEmpty()) {
-            throw new IOException(STATE + " в этот день не отмечаются!");
+        if (!STATE.equals("")) {
+            for (int i = 0; i < holidays.size(); i++) {
+                if (!holidays.get(i).select(" > div.link > a").text().equals(STATE)) {
+                    images.remove(i);
+                    holidays.remove(i);
+                    i--;
+                }
+            }
+            if (holidays.isEmpty()) {
+                throw new IOException(STATE + " в этот день не отмечаются!");
+            }
         }
         for (int i = 0; i < holidays.size(); i++) {
             Document eachPage = Jsoup.connect(holidays.select(" > span.title > a")
@@ -62,17 +72,14 @@ public class HolidaysController {
             } else {
                 description = new StringBuilder("Невозможно найти описание для данного праздника!");
             }
-            result.put(holidays.select(" > span.title > a").eachText().get(i), description.toString());
+            result.add(new Holiday(holidays.select(" > span.title > a").eachText().get(i),
+                    description.toString(),
+                    images.eachAttr("src").get(i)));
         }
     }
 
-    public Elements sortByState(Elements holidays) {
-        holidays.removeIf(e -> !e.select(" > div.link > a").text().equals(STATE));
-        return holidays;
-    }
-
     @GetMapping("/holidays")
-    public String getHolidays(@AuthenticationPrincipal User user, Model model) throws IOException {
+    public String getHolidays(@AuthenticationPrincipal User user, Model model) {
         if (!result.isEmpty()) {
             result.clear();
         }
@@ -83,16 +90,17 @@ public class HolidaysController {
         }
         DATE = String.valueOf(LocalDateTime.now().getDayOfMonth());
         MONTH = String.valueOf(LocalDateTime.now().getMonthValue());
+        STATE = "";
         URL = "https://www.calend.ru/holidays/" + MONTH + "-" + DATE;
         model.addAttribute("holidays", result);
         model.addAttribute("user", user);
-        return "osnova";
+        return "holidays";
     }
 
     @PostMapping("/holidays")
-    public String getDayAndMonth(@RequestParam String date, @RequestParam String month, @RequestParam String state, Model model) {
-        DATE = date;
-        MONTH = month;
+    public String getDayAndMonth(@RequestParam String day, @RequestParam Month month, @RequestParam String state) {
+        DATE = day;
+        MONTH = month.getTitle();
         STATE = state;
         this.URL = "https://www.calend.ru/holidays/" + MONTH + "-" + DATE;
         return "redirect:/holidays";
