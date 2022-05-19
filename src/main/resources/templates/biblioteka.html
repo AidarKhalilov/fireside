@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
-    <link rel="icon" href="/static/images/icon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/images/fire.ico" type="image/x-icon">
     <link rel="stylesheet" href="../static/css/osnova.css">
     <script src="../static/js/scrol.js"></script>
 
@@ -37,16 +37,24 @@
 
         </div>
         <div class="cont">
+
             <div class="name_txt">
-                <form method="post" action="/recipes/my">
-                    <input type="text" name="category" style="margin-left: 30%; margin-top:50px; color: white">
-                    <button type="submit">Найти</button>
-                </form>
+                <h1 style="margin-left: 32%; margin-top:50px; color: white">Мои рецепты</h1>
+                <div class="form_cat">
+                    <form method="post" action="/recipes/my">
+                        <label>Категория: <input type="text" name="category" ></label>
+                        <button class="poisk" type="submit"><img src="/static/images/lupa.svg" class="svg_lupa"></button>
+                    </form>
+                </div>
             </div>
+            <p th:if="${recipesNotFound != null}" th:text="${recipesNotFound}" class="null_info"></p>
             <div th:each="recipe : ${recipes}" class="recipe_cont" style="margin-top: 100px;margin-left:auto;margin-right:auto;">
                 <img class="dish_img" th:src="${recipe.getImage()}">
                 <div class="dish_name">
-                    <p th:text="${recipe.getTitle()}"></p>
+                    <textarea th:text="${recipe.getTitle()}" readonly></textarea>
+                </div>
+                <div class="dish_cat">
+                    <textarea th:text="'Категория -> ' + ${recipe.getCategory()}" readonly></textarea>
                 </div>
                 <form th:action="@{/recipes/my/{id}(id=${recipe.getId()})}" th:method="DELETE" class="btn">
                     <input class="btn_add" type="submit" name="delete" value="Удалить" />
