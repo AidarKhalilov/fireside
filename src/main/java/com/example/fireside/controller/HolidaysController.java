@@ -99,6 +99,9 @@ public class HolidaysController {
 
     @PostMapping("/holidays")
     public String getDayAndMonth(@RequestParam String day, @RequestParam Month month, @RequestParam String state) {
+        if (state.equals("Все праздники")){
+            state = "";
+        } 
         DATE = day;
         MONTH = month.getTitle();
         STATE = state;

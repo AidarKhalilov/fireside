@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Рецепты дня</title>
+    <title>Праздники</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=PT+Sans+Narrow:wght@700&family=Roboto&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
-    <link rel="icon" href="/static/images/icon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/images/fire.ico" type="image/x-icon">
     <link rel="stylesheet" href="../static/css/osnova.css">
     <script src="../static/js/scrol.js"></script>
 
@@ -38,7 +38,7 @@
         </div>
         <div class="cont">
             <div class="name_txt">
-                <h1 style="margin-left: 30%; margin-top:50px; color: white">Праздники</h1>
+                <h1 style="margin-left: 35%; margin-top:50px; color: white">Праздники</h1>
             </div>
             <div class="search">
                 <form action="/holidays" class="form_search" method="POST">
@@ -50,10 +50,11 @@
                             <label for="month">Месяц:</label>
                             <select name="month" id="month"></select>
                         </span>
-                    <select name = "state" id="search_cont">
-                            <option>Праздники России</option>
-                            <option>Праздники Украины</option>
+                    <select name="state" id="search_cont">
+                            <option>Все праздники</option>
                             <option>Международные праздники</option>
+                            <option>Праздники России</option>
+                            <option>Праздники Украины</option>                           
                             <option>Праздники Китая</option>
                             <option>Праздники США</option>
                             <option>Праздники Беларуси</option>
@@ -64,13 +65,13 @@
                 </form>
             </div>
 
-            <p th:if = "${exception != null}" th:text = "${exception}"></p>
+            <p th:if="${exception != null}" th:text="${exception}" class="null_info"></p>
 
             <div th:each="holiday : ${holidays}" class="recipe_cont" style="margin-top: 100px;margin-left:auto;margin-right:auto;">
 
                 <img class="dish_img" th:src="${holiday.getImage()}">
                 <div class="dish_name">
-                    <p th:text="${holiday.getTitle()}"></p>
+                    <textarea th:text="${holiday.getTitle()}" readonly></textarea>
                 </div>
                 <textarea class="dish_txt" id="dish_txt" readonly th:text="${holiday.getDescription()}"></textarea>
 
