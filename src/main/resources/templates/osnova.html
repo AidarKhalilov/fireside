@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рецепты дня</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=PT+Sans+Narrow:wght@700&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+    <link rel="icon" href="/static/images/fire.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/osnova.css">
+    <script src="../static/js/scrol.js"></script>
+
+</head>
+
+<body>
+
+    <header class="container">
+        <div class="f_menu">
+            <h1 th:text="${user.getName()}"></h1>
+        </div>
+        <div class="logo_text">
+            <h1>FIRESIDE</h1>
+        </div>
+        <div class="sec-menu">
+            <a onclick="openPopUp()" id="pop"><img src="/static/images/menu.svg" alt="" width="35%" height="35%" style="margin-left: 150px;"></a>
+        </div>
+
+    </header>
+    <div class="glava">
+        <div class="f_cont">
+
+        </div>
+        <div class="cont">
+            <div class="name_txt">
+                <h1 style="margin-left: 32%; margin-top:50px; color: white">Рецепты дня</h1>
+            </div>
+            <div th:each="recipe : ${recipes}" class="recipe_cont" style="margin-top: 100px;margin-left:auto;margin-right:auto;">
+                <img class="dish_img" th:src="${recipe.getImage()}">
+                <div class="dish_name">
+                    <textarea th:text="${recipe.getTitle()}" readonly></textarea>
+                </div>
+                <div class="dish_cat">
+                    <textarea th:text="'Категория -> ' + ${recipe.getCategory()}" readonly></textarea>
+                </div>
+                <form action="/recipes" method="post" class="btn">
+                    <input class="btn_add" type="submit" name="add" value="Добавить" />
+                    <input type="hidden" th:value="${recipe.getTitle()}" name="title" />
+                    <input type="hidden" th:value="${recipe.getDescription()}" name="description" />
+                    <input type="hidden" th:value="${recipe.getCategory()}" name="category" />
+                    <input type="hidden" th:value="${recipe.getImage()}" name="image" />
+                </form>
+                <textarea class="dish_txt" id="dish_txt" readonly th:text="${recipe.getDescription()}"></textarea>
+
+            </div>
+
+        </div>
+        <div class="t_cont">
+
+        </div>
+    </div>
+    <div id="pop_menu" class="pop_menu">
+        <div class="popup_menu_cont">
+            <a onclick="closePopUp()" class="arrow_btn_hol"><img src="/static/images/arrow.svg" style="margin-top: 21px; margin-left: 10px"></a>
+
+            <div class="popup_recipes">
+                <a href="/recipes/my">
+                    <p class="pop_recipes_p">Мои рецепты</p>
+                </a>
+            </div>
+            <div class="popup_my_recipes">
+                <a href="/holidays">
+                    <p class="my_recipes_p">Праздники</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

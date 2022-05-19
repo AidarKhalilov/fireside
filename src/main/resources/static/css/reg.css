@@ -1,0 +1,156 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    background: linear-gradient( rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.9)), url('../images/dish.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: top;
+}
+
+.cont {
+    width: 1320px;
+    height: 950px;
+    /* background-color: red; */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    /* background-color: rgba(153, 102, 102, 0.6); */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+.reg {
+    width: 500px;
+    height: 450px;
+    background-color: rgba(153, 102, 102, 0.6);
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    margin-top: 30px;
+    position: relative;
+}
+
+.question {
+    width: 500px;
+    height: 75px;
+    background-color: rgba(153, 102, 102, 0.6);
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    margin-top: 30px;
+}
+
+.mail {
+    width: 426px;
+    height: 50px;
+    outline: none;
+    border: 2px solid #8c6a6a;
+    margin-left: 6%;
+    border-radius: 15px;
+    margin-right: auto;
+}
+
+.pasword {
+    width: 426px;
+    height: 50px;
+    margin-left: 6%;
+    outline: none;
+    border: 2px solid #8c6a6a;
+    border-radius: 15px;
+    margin-right: auto;
+}
+
+.names {
+    width: 426px;
+    height: 50px;
+    margin-left: 6%;
+    outline: none;
+    border: 2px solid #8c6a6a;
+    border-radius: 15px;
+    margin-right: auto;
+}
+
+.btn_auth {
+    width: 426px;
+    height: 50px;
+    margin-left: 7%;
+    border-radius: 15px;
+    margin-top: 25px;
+    background-color: #AD8585;
+}
+
+.btn {
+    width: 430px;
+    height: 50px;
+    border-radius: 15px;
+    border: 2px solid #8c6a6a;
+    background-color: #AD8585;
+    cursor: pointer;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 25px;
+    color: white;
+}
+
+.txt_ak {
+    color: white;
+    font-family: "Inter";
+    font-size: 20px;
+    padding-left: 100px;
+    text-shadow: 0px 4px 4px rgba(140, 106, 106, 0.7);
+}
+
+.txt_ak_a {
+    color: #7777E1;
+    font-family: "Inter";
+    font-size: 20px;
+    padding-left: 15px;
+    text-shadow: 0px 4px 4px rgba(140, 106, 106, 0.7);
+}
+
+.pas {
+    color: white;
+    font-family: "Inter";
+    font-size: 20px;
+}
+
+.mails {
+    color: white;
+    margin-bottom: 20px;
+    font-family: "Inter";
+    font-size: 20px;
+}
+
+.name {
+    color: white;
+    font-family: "Inter";
+    font-size: 20px;
+}
+
+.send {
+    margin-top: 5px;
+}
+
+.m_cont {
+    margin-top: 5px;
+}
+
+.pas_cont {
+    margin-top: 5px;
+}
+
+.n_cont {
+    margin-top: 5px;
+}
+
+html {
+    overflow: hidden;
+}
