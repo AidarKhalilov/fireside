@@ -84,9 +84,8 @@
 </project>
 
 ```
-![Spring](https://easyjava.ru/wp-content/uploads/2017/10/spring-boot-logo.jpg)
-![PostgreSQL](https://developer.asustor.com/uploadIcons/0020_999_1617260177_postgresql-icon_256.png)
-![Thymeleaf](https://avatars.githubusercontent.com/u/1492367?s=280&v=4)
+<img src="https://easyjava.ru/wp-content/uploads/2017/10/spring-boot-logo.jpg">
+<img src="https://developer.asustor.com/uploadIcons/0020_999_1617260177_postgresql-icon_256.png">
 <br><br>
 К главным зависимостям, использующимся в проекте можно отнести Spring Boot для Java, упрощающий разработку веб-приложений. Также сюда можно отнести Lombok для расшире
 ния функциональности языка Java. Thymeleaf - шаблонизатор, позволяющий связывать HTML5 и XML с веб-приложением уровня Spring MVC. В проекте также используется система управления базами данных PostgreSQL.
@@ -110,7 +109,7 @@ public class FiresideApplication {
 ./mvnw spring-boot:run
 ```
 Также если у вас нет Maven, Spring, Postgres, но при этом есть Docker существует возможность запустить проект через него, для этого необходимо склонировать репозиторий к себе, перейти в каталог src/main/docker после чего ввести команду:
+<img src="https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png" width="500px" height="400px">
 ```docker
 docker-compose up
 ```
-Всем спасибо за внимание!
